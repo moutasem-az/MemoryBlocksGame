@@ -1,0 +1,218 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    background-color: #eee;
+    margin: 30px auto;
+}
+@media(max-width:767px) {
+    .container {
+        width: 350px;
+    }
+    .memory-game .game-block {
+        width: 75px;
+        height: 75px;
+    }
+}
+@media(min-width:767px) {
+    .container {
+        width: 450px;
+    }
+    .memory-game .game-block {
+        width: 100px;
+        height: 100px;
+    }
+}
+.control-button,
+.message {
+    position: absolute;
+    width: 100%;
+    height: 97%;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    background-color: #2196f38a;
+}
+.control-button span,
+.message span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -40%); 
+    color: white;
+    background-color: #2196f3;
+    padding: 15px 25px;
+    font-size: 30px;text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+
+}
+@media(max-width:767px) {
+    .control-button,
+    .message {
+        height: 575px;
+    }
+    .control-button span,
+    .message span {
+        font-size: 20px;
+        transform: translate(-50%, -50%); 
+    }    
+}
+.container .info-container {
+    width: 100%;
+    margin: 20px auto 0;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 24px;
+    overflow: hidden;
+    border: 2px solid #2196f3;
+}
+.message {
+    display: none;
+}
+.message.show {
+    display: block;   
+}
+.message.lost{
+    background-color: #ff00007d;
+}
+.message.lost span {
+    background-color: red;
+}
+@media(max-width:767px) {
+    .container .info-container {
+        font-size: 15px;
+    }    
+}
+.time {
+    font-size: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.info-container .name span,
+.info-container .time span {
+    color: #2196f3;    
+}
+.memory-game {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.memory-game.no-clicking {
+    pointer-events: none;
+}
+.memory-game .game-block {
+    transition: transform 0.5s; 
+    transform-style: preserve-3d;  
+    cursor: pointer;
+    position: relative;
+    margin: 5px auto;
+}
+.memory-game .game-block.is-flipped,
+.memory-game .game-block.is-matched {
+    transform: rotatey(90deg);
+    pointer-events: none;
+}
+.memory-game .game-block .front {
+    background-color: #333;  
+}
+.memory-game .game-block .front::before {
+    content: '!';
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    font-size: 42px;
+    font-weight: bold;
+}
+.memory-game .game-block .back {
+    transform: rotatey(90deg); 
+}
+.memory-game .game-block .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center; 
+    /* backface-visibility: hidden;    */
+    border: 3px solid #2196f3;
+}
+.memory-game .game-block .face img {
+    max-width: 99%;
+}
+.box {
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.box .tries-true,
+.box .tries-wrong {
+    padding: 15px;
+}
+.box .tries-true span,
+.box .tries-wrong span {
+    color: #2196f3;
+}
+.allScores {
+    padding: 10px 0px;
+    width: 100%;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+.allScores .scores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: 20px;
+    background-color: #eee;
+}
+.allScores .scores .info {
+    user-select: none;
+    display: flex;
+    line-height: 1.6;
+}
+
+.allScores .scores .info .right {
+    margin-left: 100px;
+}
+.allScores .scores .info span {
+    color: #2196f3;
+}
+.allScores .scores .delete {
+    user-select: none;
+    border: 2px solid #2196f3;
+    color: #2196f3;
+    line-height: 14px;
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.allScores .scores .delete span {
+    pointer-events: none;
+}
+.allScores .scores .delete:hover {
+    border-color: red;
+    color: red;
+}
+@media(max-width:767px) {
+    .allScores .scores .info {
+        font-size: 12px;
+    } 
+    .allScores .scores .info .right {
+        margin-left: 60px;
+    }  
+}
+
